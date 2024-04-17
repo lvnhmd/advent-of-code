@@ -6,6 +6,7 @@ export function findFloor(directions: string): number {
         } else if (char === ')') {
             currentFloor--;
         }
+        else throw new Error('Invalid character in directions')
     }
     return currentFloor;
 }
@@ -18,6 +19,7 @@ export function findBasementEntry(directions: string): number {
         } else if (directions[i] === ')') {
             currentFloor--;
         }
+        else throw new Error('Invalid character in directions')
 
         if (currentFloor === -1) {
             return i + 1;  

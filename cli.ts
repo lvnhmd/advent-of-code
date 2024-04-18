@@ -1,5 +1,5 @@
 import { findFloor, findBasementEntry } from './src/pathfinder';
-import { calculateWrappingPaper } from './src/wrapping-calculator';
+import { calculateWrappingPaper, calculateRibbon } from './src/wrapping-calculator';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -10,7 +10,7 @@ function main() {
         console.log("Usage: npm start <mode> <filepath>");
         console.log("Modes:");
         console.log("  path - Calculate Santa's path using directions");
-        console.log("  wrap - Calculate wrapping paper needed using dimensions");
+        console.log("  wrap - Calculate wrapping paper and ribbon needed using dimensions");
         process.exit(1);
     }
 
@@ -27,6 +27,7 @@ function main() {
             case 'wrap':
                 const dimensions = input.split("\n").filter(line => line.trim().length > 0);
                 console.log(`Total wrapping paper needed: ${calculateWrappingPaper(dimensions)} square feet`);
+                console.log(`Total ribbon needed: ${calculateRibbon(dimensions)} feet`);
                 break;
             default:
                 console.log("Invalid mode. Use 'path' or 'wrap'.");

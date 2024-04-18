@@ -16,3 +16,21 @@ export function calculateWrappingPaper(dimensions: string[]): number {
     return totalPaper;
 }
 
+export function calculateRibbon(dimensions: string[]): number {
+    let totalRibbon = 0;
+
+    dimensions.forEach(dimension => {
+        const [l, w, h] = dimension.split('x').map(Number);
+        const volume = l * w * h;
+        
+        const perimeter1 = 2 * (l + w);
+        const perimeter2 = 2 * (w + h);
+        const perimeter3 = 2 * (h + l);
+        
+        const minPerimeter = Math.min(perimeter1, perimeter2, perimeter3);
+        
+        totalRibbon += minPerimeter + volume;
+    });
+
+    return totalRibbon;
+}
